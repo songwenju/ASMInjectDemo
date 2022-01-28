@@ -52,7 +52,6 @@ apply plugin: 'custom-plugin-demo'
 customC.extensionArgs = "customC 外部传入参数"
 
 
-
 //应用插件
 apply plugin: CustomPluginA
 //传入参数

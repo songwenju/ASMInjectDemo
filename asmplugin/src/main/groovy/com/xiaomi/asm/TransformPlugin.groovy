@@ -4,7 +4,7 @@ import org.gradle.api.Project
 import com.android.build.gradle.AppExtension
 
 /**
- * 用于注册自定义 Transform 的插件
+ * 注册自定义Transform 的插件
  */
 class TransformPlugin implements Plugin<Project> {
 

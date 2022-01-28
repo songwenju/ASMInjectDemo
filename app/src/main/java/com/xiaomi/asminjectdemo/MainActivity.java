@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
         Button button1 = findViewById(R.id.mBtn1);
         Button button2 = findViewById(R.id.mBtn2);
 
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

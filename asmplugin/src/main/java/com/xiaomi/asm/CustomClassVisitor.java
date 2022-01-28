@@ -40,7 +40,8 @@ public class CustomClassVisitor extends ClassVisitor {
 //                    mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
                     mv.visitLdcInsn("MainActivity");
                     mv.visitLdcInsn("btn click finish");
-                    mv.visitMethodInsn(INVOKESTATIC, "com/xiaomi/asminjectdemo/LogUtil", "i", "(Ljava/lang/String;Ljava/lang/String;)V", false);
+                    mv.visitMethodInsn(INVOKESTATIC, "com/xiaomi/asminjectdemo/LogUtil",
+                            "i", "(Ljava/lang/String;Ljava/lang/String;)V", false);
                 }
             };
         }

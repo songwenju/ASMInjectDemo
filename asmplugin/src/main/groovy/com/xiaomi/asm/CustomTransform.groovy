@@ -64,11 +64,9 @@ class CustomTransform extends Transform {
     }
 
     @Override
-    void transform(TransformInvocation transformInvocation) throws
-            TransformException, InterruptedException, IOException {
+    void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
         super.transform(transformInvocation)
         /**Transform 的 inputs 有两种类型，一种是目录，一种是 jar 包，要分开遍历 */
-
         transformInvocation.getInputs().each {
             TransformInput input ->
                 /**遍历目录*/
