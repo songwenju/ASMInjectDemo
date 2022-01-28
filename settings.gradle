@@ -1,0 +1,4 @@
+rootProject.name='ASMInjectDemo'
+include ':app'
+include ':asmplugin'
+include ':buildSrc'

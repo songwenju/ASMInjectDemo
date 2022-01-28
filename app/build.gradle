@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "com.lulu.asminjectdemo"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+defaultTasks("some-task")
+
+task projectTest {
+    println "project.name: ${project.name}"
+    println "project.allprojects: ${project.allprojects}"
+    println "project.defaultTasks: ${project.defaultTasks}"
+}
+
+apply plugin: 'asm-click-plugin'
+
+apply plugin: 'custom-plugin-demo'
+customC.extensionArgs = "customC 外部传入参数"
+
+
+
+//应用插件
+apply plugin: CustomPluginA
+//传入参数
+customA.extensionArgs = "我是外部传入的参数"
+
+/**
+ * 定义一个Extension类用来接收脚本传的参数
+ */
+class CustomExtensionA {
+    String extensionArgs = ""
+}
+/**
+ * 自定义插件示例
+ */
+class CustomPluginA implements Plugin<Project> {
+
+    @Override
+    void apply(Project target) {
+        //将Extension注册给Plugin
+        def extension = target.extensions.create('customA', CustomExtensionA)
+        //定义一个任务
+        target.task('CustomPluginTaskA') {
+            doLast {
+                println "接收外部参数：${extension.extensionArgs}"
+            }
+        }
+
+    }
+}
+
+
+
+
